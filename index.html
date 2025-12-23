@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StageMind AI | تشغيل ذكي للمسرح</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=IBM+Plex+Arabic:wght@100;200;300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --midnight: #0A192F;
+      --navy: #0F172A;
+      --teal: #64FFDA;
+      --gold: #FFB400;
+      --slate-dark: #1E293B;
+    }
+    
+    * {
+      transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--midnight);
+      color: #E2E8F0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .font-plex {
+      font-family: 'IBM Plex Arabic', sans-serif;
+    }
+
+    .font-amiri {
+      font-family: 'Amiri', serif;
+    }
+    
+    .text-electric-teal { color: var(--teal); }
+    .bg-electric-teal { background-color: var(--teal); }
+    .border-electric-teal { border-color: var(--teal); }
+    .text-amber-gold { color: var(--gold); }
+    .bg-amber-gold { background-color: var(--gold); }
+    
+    /* Advanced Glows & Glassmorphism */
+    .glow-teal { filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.3)); }
+    .glow-gold { filter: drop-shadow(0 0 15px rgba(255, 180, 0, 0.3)); }
+    
+    .glass-card {
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .glass-card:hover {
+      background: rgba(30, 41, 59, 0.6);
+      border-color: rgba(100, 255, 218, 0.2);
+    }
+
+    /* Custom Selection */
+    ::selection {
+      background: rgba(100, 255, 218, 0.3);
+      color: #fff;
+    }
+
+    /* Animations */
+    @keyframes subtle-pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    .animate-subtle-pulse { animation: subtle-pulse 4s ease-in-out infinite; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--midnight); }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 255, 218, 0.1);
+      border-radius: 100px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--teal); }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    /* Input focus styles */
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.05);
+    }
+
+    /* RTL specific adjustments */
+    [dir="rtl"] .perspective-1000 {
+      perspective: 1000px;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

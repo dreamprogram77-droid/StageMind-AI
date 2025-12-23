@@ -1,0 +1,8 @@
+{
+  "name": " StageMind AI ",
+  "description": "An AI-powered platform for theatre management, optimizing occupancy, revenue, and crowd flow with real-time data and dynamic pricing.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
