@@ -14,6 +14,10 @@ interface DashboardWidgetProps {
   variant?: 'teal' | 'gold' | 'blue' | 'purple';
   footerText?: string;
   isLoading?: boolean;
+  // Customization props
+  showTrend?: boolean;
+  showChart?: boolean;
+  showFooter?: boolean;
 }
 
 const DashboardWidget: React.FC<DashboardWidgetProps> = ({
@@ -24,7 +28,10 @@ const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   icon,
   variant = 'teal',
   footerText,
-  isLoading = false
+  isLoading = false,
+  showTrend = true,
+  showChart = true,
+  showFooter = true
 }) => {
   const variants = {
     teal: {
@@ -56,7 +63,7 @@ const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   const currentVariant = variants[variant];
 
   return (
-    <div className={`glass-card p-6 rounded-[32px] border transition-all duration-500 hover:-translate-y-1 group relative overflow-hidden ${currentVariant.border} ${currentVariant.glow}`}>
+    <div className={`glass-card p-6 rounded-[32px] border transition-all duration-500 hover:-translate-y-1 group relative overflow-hidden h-full ${currentVariant.border} ${currentVariant.glow}`}>
       {/* Background Pulse Decorative */}
       <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity ${currentVariant.bg}`} />
 
@@ -69,7 +76,7 @@ const DashboardWidget: React.FC<DashboardWidgetProps> = ({
             <h3 className="text-3xl font-black text-white font-plex tracking-tighter">
               {isLoading ? '...' : value}
             </h3>
-            {trend && (
+            {trend && showTrend && (
               <div className={`flex items-center gap-0.5 px-2 py-0.5 rounded-lg text-[9px] font-black border ${
                 trend.isUp ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'
               }`}>
@@ -92,20 +99,22 @@ const DashboardWidget: React.FC<DashboardWidgetProps> = ({
         )}
 
         {/* Mini Chart / Status Placeholder */}
-        <div className="h-12 w-full flex items-end gap-1 px-1">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div 
-              key={i} 
-              className={`flex-1 rounded-t-sm transition-all duration-1000 ${currentVariant.bg.replace('/5', '/20')} group-hover:${currentVariant.accent.replace('text-', 'bg-')}`}
-              style={{ 
-                height: `${20 + Math.random() * 80}%`,
-                transitionDelay: `${i * 40}ms`
-              }}
-            />
-          ))}
-        </div>
+        {showChart && (
+          <div className="h-12 w-full flex items-end gap-1 px-1">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div 
+                key={i} 
+                className={`flex-1 rounded-t-sm transition-all duration-1000 ${currentVariant.bg.replace('/5', '/20')} group-hover:${currentVariant.accent.replace('text-', 'bg-')}`}
+                style={{ 
+                  height: `${20 + Math.random() * 80}%`,
+                  transitionDelay: `${i * 40}ms`
+                }}
+              />
+            ))}
+          </div>
+        )}
 
-        {footerText && (
+        {footerText && showFooter && (
           <div className="pt-4 border-t border-white/5 flex items-center justify-between flex-row-reverse">
             <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest font-plex">
               {footerText}
